@@ -1,0 +1,35 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "Roles details";
+}
+
+<div class="content-admin-big">
+    <div class="content-corner-admin-employees"></div>
+    <div class="content-panel-name">
+        <h2>@Model.Name role details</h2>
+    </div>
+    
+    <div class="content-table">
+        <h4>List of employees in this role</h4>
+        @if (ViewBag.UserCount == 0)
+        {
+            <hr />
+            <p>No employees found in this role.</p>
+        }
+        <ul>
+            @foreach (var item in ViewBag.Users)
+            {
+
+                <li>@item.EmployeeName @item.EmployeeSurname (@item.UserName) </li>
+                
+            }
+        </ul>
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+    </div>
+
+
+

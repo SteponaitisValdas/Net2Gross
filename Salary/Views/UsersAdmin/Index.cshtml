@@ -1,0 +1,63 @@
+﻿@using Wages.Calculation
+@model IEnumerable<IdentitySample.Models.ApplicationUser>
+
+
+@{
+    ViewBag.Title = "Employees panel";
+}
+
+<div class="content-admin-big">
+    <div class="content-corner-admin-employees"></div>
+    <div class="content-panel-name"><h2>Employees panel</h2></div>
+    
+    <div class="content-table-admin">
+        <table id="employees" class="table table-bordered table-hover thin-border">
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Surname </th>
+                    <th> Net salary </th>
+                    <th> Gross salary </th>
+                    <th class="no-sort"> Configuration </th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+
+                //Method Calculator return dictionary with complete salary info
+                Dictionary<string,string> salaryInfo = new NetToGross().Calculator(item.EmployeeNettoWage);
+                <tr>
+                    <td> @item.EmployeeName </td>
+                    <td> @Html.DisplayFor(modelItem => item.EmployeeSurname) </td>
+                    <td> @salaryInfo["net"] €</td>
+                    <td> @salaryInfo["gross"] €</td>
+                    <td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default btn-xs"}) 
+                        }
+
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default btn-xs" }) 
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default btn-xs" })
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#employees").dataTable({});
+        });
+
+    </script>
+
+}

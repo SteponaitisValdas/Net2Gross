@@ -1,0 +1,295 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: black;
+    opacity: 1.0;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 3px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: black;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+
+.no-sort::after {
+    display: none !important;
+
+}
+
+.no-sort {
+    pointer-events: none !important;
+    cursor: default !important;
+}
+
+
+.content-big {
+    width: 900px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    clear: left;
+    border-radius: 50px 0px 0px 0px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.content-panel-name {
+    position: relative;
+    margin-top: -75px;
+    margin-left: 90px;
+    margin-bottom: 50px;
+}
+
+.content-table {
+    height: auto;
+    margin-top: 20px;
+    width: 100%;
+    padding: 20px;
+}
+
+.content-table table {
+    font-size: 13px;
+}
+
+
+
+
+
+.content-table td:nth-child(2) {
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-align: right;
+}
+.content-table tr:first-child, .content-table tr:last-child {
+    background-color: #333;
+}
+.content-table tr:first-child:hover {
+    background-color: #333;
+}
+.content-table tr:last-child:hover {
+    background-color: #333;
+}
+
+
+.content-admin-big {
+    position: relative;
+    border-radius: 50px 0px 0px 0px;
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.profile-img-big {
+    position: absolute;
+    right: 220px;
+    margin-top: 70px;
+    width: 170px;
+    height: 170px;
+}
+
+.table thead {
+    background-color: #333;
+}
+
+.profile-img-big-details {
+    position: relative;
+    right: 100px;
+    margin: 0 auto;
+    float: right;
+    margin-top: -159px;
+    padding-bottom: 50px;
+    width: 130px;
+    height: 130px;
+    border-radius: 100px;
+}
+
+.profile-img-big-home {
+    position: relative;
+    right: 100px;
+    margin: 0 auto;
+    float: right;
+    margin-top: -90px;
+    padding-bottom: 50px;
+    width: 130px;
+    height: 130px;
+    border-radius: 100px;
+}
+
+.profile-img-square-details {
+    
+    width: 130px;
+    height: 130px;  
+    border-radius: 100px;
+    border: 0px solid #333;
+    box-shadow: 0px 0px 70px 2px #2b3e50;
+}
+
+
+.profile-img-square {
+    width: 170px;
+    height: 170px;  
+    border-radius: 100px;
+    border: 0px solid #333;
+    box-shadow: 0px 0px 70px 20px #2b3e50;
+}
+
+.content-corner,
+.content-corner-edit-employees,
+.content-corner-info,
+.content-corner-delete,
+.content-corner-register,
+.content-corner-admin-employees,
+.content-corner-login,
+.content-corner-forgot
+ {
+    border-radius: 50px 0px 50px 0px;
+    padding: 20px;
+    width: 80px;
+    height: 80px;
+} 
+
+.content-corner-edit-employees {
+    background: #bf5a16 url("../content/edit-employee.png") no-repeat center;
+}
+.content-corner-info {
+    background: #bf5a16 url("../content/employee-info.png") no-repeat center;
+}
+.content-corner-admin-employees {
+    background: #bf5a16 url("../content/employees.png") no-repeat center;
+}
+.content-corner {
+    background: #bf5a16 url("../content/money.png") no-repeat center;
+}
+.content-corner-delete{
+    background: #bf5a16 url("../content/delete.png") no-repeat center;
+}
+.content-corner-register{
+    background: #bf5a16 url("../content/register.png") no-repeat center;
+}
+.content-corner-login{
+    background: #bf5a16 url("../content/login.png") no-repeat center;
+}
+.content-corner-forgot{
+    background: #bf5a16 url("../content/forgot.png") no-repeat center;
+}
+.content-table-admin {
+    height: calc(100% - 100px);
+    margin-top: 20px;
+    width: 100%;
+    border: 0px solid red;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.content-table-admin table {
+    font-size: 13px;
+}
+
+.edit-form {
+    height: auto;
+    width: 400px;
+    padding: 20px;
+}
+
+.edit-salary-info {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.social-logins {
+    position: absolute;
+    top: 128px;
+    right: 155px;
+    width: 300px;
+    height: auto;
+}
+
+
+.table-bordered tr:nth-child(even) {
+    background-color: #5a6a7a;
+} 
+
+.table-bordered td:nth-child(3), th:nth-child(3) {
+    text-align: right;
+}
+.table-bordered td:nth-child(4), th:nth-child(4) {
+    text-align: right;
+}
+
+td:last-child {
+    text-align: center;
+}
+th:last-child {
+    text-align: center;
+}
+
+.thin-border {
+    border: 1px solid #333;
+}
+
+.element {
+    position: relative;
+    top: 50%;
+    transform: perspective(1px) translateY(-50%); 
+}
+
+.jumbotron {
+    margin: 150px;
+}
+
+

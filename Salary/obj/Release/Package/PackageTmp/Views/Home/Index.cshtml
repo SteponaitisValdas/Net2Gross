@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNet.Identity
+@using IdentitySample.Models
+@using Microsoft.AspNet.Identity.EntityFramework
+
+@{
+
+    ViewBag.Title = "Salary info";
+
+}
+
+<div class="jumbotron">
+    <h1><b>Net2Gross</b>
+    </h1>
+    <p class="lead">An application to convert net salary to gross, admin and manage employees. To use this app you need to login or register.</p>
+    <p>
+        @Html.ActionLink("Login", "Login", "Account", null, new {@class = "btn btn-primary btn-large"}) &nbsp &nbsp
+        @Html.ActionLink("Register", "Register", "Account", null, new {@class = "btn btn-primary btn-large"})
+    </p>
+</div>
+
+

@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+@using IdentitySample.Models
+@using Microsoft.AspNet.Identity.EntityFramework
+@using Wages.Calculation;
+
+
+@{
+
+    ViewBag.Title = "Salary info";
+
+}
+
+<div class="content-big">
+    <div class="content-corner"></div>
+    <div class="content-panel-name"><h2>Your detailed salary info</h2></div>
+    <div class="content-table">
+        <div class="profile-img-big-home">
+            <img src="@Url.Action("EmployeePhotos", "Home")" class="profile-img-square-details" />
+        </div>
+        Name: <b>@ViewBag.EmployeeName @ViewBag.EmployeeSurname  </b><br />
+        Email: <b>@ViewBag.Email</b> <br /><br />
+        <table class="table table-hover thin-border">
+            <tbody>
+                <tr>
+                    <td> Salary (Gross)</td>
+                    <td> @ViewBag.salaryInfo["gross"] €</td>
+                </tr>
+                <tr>
+                    <td>Applied Tax Exempt Income</td>
+                    <td> @ViewBag.salaryInfo["taxExemptIncome"] €</td>
+                </tr>
+                <tr>
+                    <td> Resident Income Tax 15%</td>
+                    <td> @ViewBag.salaryInfo["residentIncomeTax"] €</td>
+                </tr>
+                <tr>
+                    <td> Health Insurance 6%</td>
+                    <td> @ViewBag.salaryInfo["healthInsurance"] €</td>
+                </tr>
+                <tr>
+                    <td> Pension and Health Insurance 3%</td>
+                    <td> @ViewBag.salaryInfo["pensionSocialInsurance"] €</td>
+                </tr>
+                <tr>
+                    <td> Salary (Net)</td>
+                    <td> @ViewBag.salaryInfo["net"] €</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

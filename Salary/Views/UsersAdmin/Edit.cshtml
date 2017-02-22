@@ -1,0 +1,147 @@
+﻿@model IdentitySample.Models.EditUserViewModel
+
+@{
+
+    ViewBag.Title = "Edit employee";
+
+}
+
+
+<div class="content-admin-big">
+    <div class="content-corner-edit-employees"></div>
+    <div class="content-panel-name">
+        <h2>Edit</h2>
+    </div>
+    
+    <div class="profile-img-big">
+        <img src="@Url.Action("EmployeePhotos", "UsersAdmin", new { id = Model.Id})" class="profile-img-square"/>
+    </div>
+
+    
+    <div class="edit-form">
+    @using(Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+    {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmployeeName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EmployeeName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmployeeSurname, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.EmployeeSurname, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EmployeeSurname)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmployeeNettoWage, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.EmployeeNettoWage, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.EmployeeNettoWage)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EmployeePhoto, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        <input class="form-control" id="uploadFile" placeholder="Choose File" disabled="disabled" />
+                        <div class="fileUpload btn btn-default btn-sm">
+                            <span>Choose photo</span>
+                            <input class="upload" type="file" name="EmployeePhoto" id="uploadBtn" accept=".png,.jpg,.jpeg,.gif,.tif" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Roles", new { @class = "control-label col-md-2" })
+                    <span class="col-md-10">
+                        @foreach (var item in Model.RolesList)
+                        {
+                            <input type="radio" name="SelectedRole" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
+                            @Html.Label(item.Value, new { @class = "control-label" })
+                        }
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+            @Html.ActionLink("Back to Employees List", "Index")
+        }
+    </div>
+    <div class="edit-salary-info">
+        <div class="content-table" style="margin-top: -20px;">
+            <table class="table table-hover thin-border">
+                <tbody>
+                <tr>
+                    <td> Salary (Gross)</td>
+                    <td> @ViewBag.salaryInfo["gross"] €</td>
+                </tr>
+                <tr>
+                    <td> Applied Tax Exempt Income</td>
+                    <td> @ViewBag.salaryInfo["taxExemptIncome"] €</td>
+                </tr>
+                <tr>
+                    <td> Resident Income Tax 15%</td>
+
+                    <td> @ViewBag.salaryInfo["residentIncomeTax"] €</td>
+                </tr>
+                <tr>
+                    <td> Health Insurance 6%</td>
+                    <td> @ViewBag.salaryInfo["healthInsurance"] €</td>
+                </tr>
+                <tr>
+                    <td> Pension and Health Insurance 3%</td>
+                    <td> @ViewBag.salaryInfo["pensionSocialInsurance"] €</td>
+                </tr>
+                <tr>
+                    <td> Salary (Net)</td>
+                    <td> @ViewBag.salaryInfo["net"] €</td>
+                </tr>
+                </tbody>
+
+            </table>
+            <b>*Click save to refresh salary information</b>
+        </div>
+    </div>
+</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+        <script>
+            document.getElementById("uploadBtn").onchange = function () {
+                document.getElementById("uploadFile").value = this.value;
+            };
+
+            $.validator.methods.range = function (value, element, param) {
+                var globalizedValue = value.replace(",", ".");
+                return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+            }
+
+            $.validator.methods.number = function (value, element) {
+                return this.optional(element) || /-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+            }
+            //Date dd/MM/yyyy
+            $.validator.methods.date = function (value, element) {
+                var date = value.split("/");
+                return this.optional(element) || !/Invalid|NaN/.test(new Date(date[2], date[1], date[0]).toString());
+            }
+        </script>
+    }

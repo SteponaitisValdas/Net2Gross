@@ -1,0 +1,61 @@
+﻿@model IdentitySample.Models.ApplicationUser
+
+@{
+
+    ViewBag.Title = "Employee details";
+
+}
+
+
+<div class="content-big">
+    <div class="content-corner-info"></div>
+    <div class="content-panel-name"><h2>Details of <b>@Model.EmployeeName @Model.EmployeeSurname</b></h2></div>
+    <div class="content-table">
+        Email: <b>@Model.Email</b><br/>
+        Roles:
+        <b>
+            @foreach (var item in ViewBag.RoleNames)
+            {
+                @item
+            }
+        </b>
+        <br/><br/>
+        <div class="profile-img-big-details">
+            <img src="@Url.Action("EmployeePhotos", "UsersAdmin", new { id = Model.Id})" class="profile-img-square-details" />
+        </div>
+
+        <table class="table table-hover thin-border">
+            <tbody>
+                <tr>
+                    <td> Salary (Gross)</td>
+                    <td> @ViewBag.salaryInfo["gross"] €</td>
+                </tr>
+                <tr>
+                    <td> Applied Tax Exempt Income</td>
+                    <td> @ViewBag.salaryInfo["taxExemptIncome"] €</td>
+                </tr>
+                <tr>
+                    <td> Resident Income Tax 15%</td>
+
+                    <td> @ViewBag.salaryInfo["residentIncomeTax"] €</td>
+                </tr>
+                <tr>
+                    <td> Health Insurance 6%</td>
+                    <td> @ViewBag.salaryInfo["healthInsurance"] €</td>
+                </tr>
+                <tr>
+                    <td> Pension and Health Insurance 3%</td>
+                    <td> @ViewBag.salaryInfo["pensionSocialInsurance"] €</td>
+                </tr>
+                <tr>
+                    <td> Salary (Net)</td>
+                    <td> @ViewBag.salaryInfo["net"] €</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+

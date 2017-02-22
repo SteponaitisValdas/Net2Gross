@@ -1,0 +1,26 @@
+﻿@model IdentitySample.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Delete user";
+}
+
+<div class="content-big">
+    <div class="content-corner-delete"></div>
+    <div class="content-panel-name"><h2>Are sure want to delete <b>@Model.EmployeeName @Model.EmployeeSurname?</b></h2></div>
+    <div class="content-table">
+        <div>
+            <h4>Employee @Model.EmployeeName @Model.EmployeeSurname will be deleted immediately.<br/><b>You can't undo this action</b></h4>
+            <hr />
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-primary" /> |
+                    @Html.ActionLink("Back to List", "Index" , null, new { @class = "btn btn-default" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
